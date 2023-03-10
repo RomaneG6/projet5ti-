@@ -18,3 +18,21 @@ function createUser($pdo)
         die($message);
     }
 }
+function ChercherUser($pdo){
+    try {
+        $query = "select*from utilisateurs where loginUser=:loginUser and passWordUser=:passWordUser";
+        $chercheUser = $pdo->prepare($query);
+        $chercheUser->execute([
+            'loginUser' => $_POST['txtLogin'],
+            'passWordUser' => $_POST['txtMp'],
+
+        ]);
+        $user=$chercheUser -> fetch();
+        if ($user) {
+            $_SESSION['user']=$user;
+        }
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}

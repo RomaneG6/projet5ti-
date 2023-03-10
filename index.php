@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "Config/connexionDb.php";
 ?>
 <!DOCTYPE html>
@@ -17,13 +18,15 @@
         <ul class="flex space-evenly">
             <li class="menu"><a href="/">Home</a></li>
             <li  class="menu"><a href="/profil">Page profil</a></li>
-            <li  class="menu"><a href="/connexion">Connexion</a></li>
-            <!--<li class="imageMenu"><a href="/"><ion-icon size="large" name="home-outline"></ion-icon></a></li>
-            <li class="imageMenu"><a href="/profil"><ion-icon size="large" name="person-outline"></ion-icon></a></li> => image-->
+            <li  class="menu"> <?php if(isset($_SESSION['user'])): ?>
+                                        <a href="deconnexion">Déconnexion</a>
+                                        <?php else : ?>
+                                        <a href="connexion">Connexion</a></li>
+                                        <?php endif ?>
         </ul>
     </header>
     <main>
-        <?php
+        <?php var_dump($_SESSION);
             require_once "Controller/dramAsiatController.php";
             require_once "Controller/usersController.php";
         ?>
