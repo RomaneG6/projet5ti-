@@ -1,7 +1,6 @@
 <?php
 
-function createUser($pdo)
-{
+function createUser($pdo){
     try{
         $query = "insert into utilisateurs (nameUser, firstNUser, loginUser, passWordUser, emailUser) values (:nameUser, :firstNUser, :loginUser, :passWordUser, :emailUser)"; //nom des colonnes utilisateur
         $newUser = $pdo->prepare($query);
@@ -12,8 +11,7 @@ function createUser($pdo)
             'passWordUser' => $_POST["txtMp"],
             'emailUser' => $_POST["txtEmail"],
         ]);
-    }
-    catch(PDOException $e){
+    }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);
     }

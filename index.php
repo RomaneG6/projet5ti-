@@ -26,7 +26,7 @@
         </ul>
     </header>
     <main>
-        <?php var_dump($_SESSION);
+        <?php
             require_once "Controller/dramAsiatController.php";
             require_once "Controller/usersController.php";
         ?>
