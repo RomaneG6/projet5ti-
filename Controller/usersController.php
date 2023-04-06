@@ -6,13 +6,13 @@ $uri = $_SERVER['REQUEST_URI'];
 
 if($uri === "/inscription"){
     if(isset($_POST["btnEnvoi"])){
-        $messageErrorLogin = verifData();
-        if (!isset($messageErrorLogin)) {
+        $messageError = verifData();
+        if (!isset($messageError)) {
             createUser($pdo);
             header('location:/connexion');
         }
     }
-    require_once "Templates/Users/editProfil.php";
+    require_once "Templates/Users/InscriptionOrEditProfil.php";
 }
 elseif ($uri === "/connexion") {
     if(isset($_POST["btnEnvoi"])){
@@ -24,15 +24,20 @@ elseif ($uri === "/connexion") {
     session_destroy();
     header('location:/');
 }elseif ($uri === "/profil") {
-    require_once "Templates/Users/profil.php";
+    require_once "Templates/Users/InscriptionOrEditProfil.php";
 }
 
 
 function verifData(){
     foreach ($_POST as $key => $value) {
         if (empty($value)) {
-            $messageErrorLogin[$key] = "Votre " . $key . " est vide";
+            $messageError[$key] = "Votre " . $key . " est vide";
         }
     }
-    return $messageErrorLogin;
+    if (isset($messageError)) {
+        return $messageError;
+    }
+    else {
+        return false;
+    }
 }

@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(19, 19, 19);
+    color: rgb(179, 179, 179);
+}
+li{
+    color: rgb(179, 179, 179);
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+img{
+    box-shadow: 2px 0px 25px black;
+    height: 25em;
+}

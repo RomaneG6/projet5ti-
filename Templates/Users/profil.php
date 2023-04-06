@@ -2,7 +2,7 @@
         <ol>
             <div>
                 <li>Nom</li>
-                <p>Sandiego</p>
+                <p><?= $_SESSION['user'] -> nomUser ?></p>
             </div>
             <div>
                 <li>Prénom</li>
