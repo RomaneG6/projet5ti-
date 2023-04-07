@@ -18,8 +18,14 @@
             <li class="menu"><a href="/">Films</a></li>
             <li class="menu"><a href="/">Séries</a></li>
             <li class="menu"><a href="/">Anime</a></li>
-            <input id="searchbar" onkeyup="search_stream()" type="text"
-        name="search" placeholder="Rechercher...">
+            <form method="post" action="traitement.php">
+        </ul>
+                <p>
+                    <input type="search" placeholder="Rechercher" name="search" id="searchbar"/>
+                    <button id="loupe" type="submit" class="icone-loupe"></button>
+                </p>
+            </form>
+        <ul class="flex space-evenly">
             <li  class="menu"> <?php if(isset($_SESSION['user'])): ?>
                                         <a href="deconnexion">Déconnexion</a>
                                         <?php else : ?>
