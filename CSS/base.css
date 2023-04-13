@@ -2,13 +2,21 @@ body{
     background-color: rgb(19, 19, 19);
     color: rgb(179, 179, 179);
 }
-li{
+ul{
+    width: 50em;
     color: rgb(179, 179, 179);
     list-style-type: none;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 img{
+    margin-top: 10em;
     box-shadow: 2px 0px 25px black;
-    height: 25em;
+    height: 20em;
+}
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

@@ -1,0 +1,1 @@
+<p><?= $_SESSION['stream'] -> streamImage ?></p>

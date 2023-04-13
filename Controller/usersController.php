@@ -24,6 +24,12 @@ elseif ($uri === "/connexion") {
     session_destroy();
     header('location:/');
 }elseif ($uri === "/profil") {
+    require_once "Templates/Users/profil.php";
+}elseif ($uri === "/modifyProfil") {
+    if(isset($_POST["btnEnvoi"])){
+        modifyUser($pdo);
+        header('location:/profil');
+    }
     require_once "Templates/Users/InscriptionOrEditProfil.php";
 }
 

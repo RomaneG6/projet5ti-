@@ -12,40 +12,30 @@
     <title>Metsar</title>
 </head>
 <body>
+<main>
     <header>
-        <ul class="flex space-evenly">
-            <li class="menu"><a href="/">Home</a></li>
-            <li class="menu"><a href="/">Films</a></li>
-            <li class="menu"><a href="/">Séries</a></li>
-            <li class="menu"><a href="/">Anime</a></li>
-            <form method="post" action="traitement.php">
-        </ul>
-                <p>
-                    <input type="search" placeholder="Rechercher" name="search" id="searchbar"/>
-                    <button id="loupe" type="submit" class="icone-loupe"></button>
-                </p>
-            </form>
-        <ul class="flex space-evenly">
-            <li  class="menu"> <?php if(isset($_SESSION['user'])): ?>
-                                        <a href="deconnexion">Déconnexion</a>
-                                        <?php else : ?>
-                                        <a href="connexion">Connexion</a></li>
-                                        <?php endif ?>
-            <li  class="menu"><a href="/profil">Page profil</a></li>                            
-        </ul>
-    </header>
-    <main>
-        <div class ="av1">
-            <a href="avatar1" ><img src="img/avatar1Pic.png"/></a>
+        <div class="flex">
+            <ul>
+                <li  class="menu"> <a href="/">Accueil</a></li>
+                <?php if(isset($_SESSION['user'])): ?>
+                    <li  class="menu"> <a href="deconnexion">Déconnexion</a></li>
+                    <li  class="menu"><a href="profil">Page profil</a></li>                            
+                <?php else : ?>
+                    <li  class="menu"> <a href="inscription">Inscription</a></li>
+                    <li><a href="connexion">Connexion</a></li>
+                <?php endif ?>
+            </ul>
+            <p>
+                <input type="search" placeholder="Rechercher" name="search" id="searchbar"/>
+                <button id="loupe" type="submit" class="icone-loupe"></button>
+            </p>
         </div>
-        <h1>Avatar</h1>
-        <p>sciences-fiction</p>
-        <h2>Synopsis</h2>
-        <p>https://youtu.be/MJ3Up7By5cw</p>
+    </header>
         <?php
+            require_once "Templates/streams/pageAccueil.php";
             require_once "Controller/streamsController.php";
             require_once "Controller/usersController.php";
         ?>
-    </main>
+</main>
 </body>
 </html>
