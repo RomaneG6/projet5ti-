@@ -13,7 +13,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" placeholder="Email" class="form-control" id="email" name="mail" value="<?php if(isset($_SESSION["user"])) :?><?= $_SESSION["user"]->userEmail ?><?php endif ?>">
+                    <input type="email" placeholder="Email" class="form-control" id="email" pattern="+@" name="mail" value="<?php if(isset($_SESSION["user"])) :?><?= $_SESSION["user"]->userEmail ?><?php endif ?>">
                     <?php if(isset($messageErrorLogin['email'])) :?><p class="text-danger"> <?= $messageErrorLogin['mail'] ?> </p> <?php endif ?>
                 </div>
                 <div class="mb-3">
@@ -26,8 +26,9 @@
                     <input type="<?php if(isset($_SESSION['user'])) :?>text<?php else : ?>password<?php endif ?>"placeholder="Mot de passe" class="form-control" id="Password" name="mp"value="<?php if(isset($_SESSION["user"])) : ?><?= $_SESSION["user"]->passWordUser ?><?php endif ?>">
                     <?php if(isset($messageErrorLogin['mot_de_passe'])) : ?> <p> <?= str_replace('_', ' ',$messageErrorLogin['mp']) ?> </p> <?php endif ?>
                 </div>
+                <a href="connexion.php">Déjà inscrit ?</a>
                 <div>
-                    <button name="btnEnvoi" class="btn btn-primary" value ="inscrire"><?php if(isset($_SESSION["user"])) :?>Modifier<?php else : ?>Envoyer<?php endif ?></button>
+                    <button name="btnEnvoi" class="btn btn-primary" value ="envoyer"><?php if(isset($_SESSION["user"])) :?>Modifier<?php else : ?>S'inscrire<?php endif ?></button>
                 </div>
             </fieldset>
         </form>

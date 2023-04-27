@@ -1,3 +1,6 @@
+title{
+    color: rgb(61, 0, 0);
+}
 body{
     background-color: rgb(19, 19, 19);
     color: rgb(179, 179, 179);
@@ -14,9 +17,43 @@ img{
     margin-top: 10em;
     box-shadow: 2px 0px 25px black;
     height: 20em;
+    margin-left: 20em;
+    margin-top: 50px;
 }
 .flex{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.zoom-out img {
+	-webkit-transform: scale(1.25);
+	transform: scale(1.25);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.zoom-out :hover img {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
+
+.conteneur2{
+    max-width: 960px;
+    overflow: hidden;
+    margin: 50px auto;
+    box-shadow: 2px 0px 25px black;
+}
+@keyframes defilement2{
+    0%{transform: translate(0,0);}
+    100%{transform: translate(-75%,0);}
+}
+.d2{
+    width: 300%;
+    height: 100;
+    padding-top: 40%;
+    background-image: url("img/CbannerSOLO.png"), url("img/CbannerTESO.png"), url("img/CbannerBDO.png");
+    background-size: contain;
+    animation: defilement2 12s linear infinite;
+}
+.d2:hover{
+    animation-play-state: paused;
 }

@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/base.css">
-    <title>Metsar</title>
+    <title>MMOpack.free</title>
 </head>
 <body>
 <main>
@@ -32,7 +32,7 @@
         </div>
     </header>
         <?php
-            require_once "Templates/streams/pageAccueil.php";
+            require_once "Templates/packs/pageAccueil.php";
             require_once "Controller/streamsController.php";
             require_once "Controller/usersController.php";
         ?>

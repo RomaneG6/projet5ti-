@@ -8,8 +8,12 @@ if($uri === "/inscription"){
     if(isset($_POST["btnEnvoi"])){
         $messageError = verifData();
         if (!isset($messageError)) {
-            createUser($pdo);
-            header('location:/connexion');
+            $messageError = verifData();
+            if (!$messageError) {
+                createUser($pdo);
+                header('location:/connexion');
+            }
+            
         }
     }
     require_once "Templates/Users/InscriptionOrEditProfil.php";
@@ -36,7 +40,7 @@ elseif ($uri === "/connexion") {
 
 function verifData(){
     foreach ($_POST as $key => $value) {
-        if (empty($value)) {
+        if (empty(str_replace(' ', '', $value))) {
             $messageError[$key] = "Votre " . $key . " est vide";
         }
     }
