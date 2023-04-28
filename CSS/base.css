@@ -35,25 +35,56 @@ img{
 	-webkit-transform: scale(1);
 	transform: scale(1);
 }
-
-.conteneur2{
-    max-width: 960px;
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+img {
+    max-width: 100%;
+}
+.slider-container {
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+    height: 350px;
     overflow: hidden;
-    margin: 50px auto;
-    box-shadow: 2px 0px 25px black;
 }
-@keyframes defilement2{
-    0%{transform: translate(0,0);}
-    100%{transform: translate(-75%,0);}
+.menu {
+    position: absolute;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
 }
-.d2{
-    width: 300%;
-    height: 100;
-    padding-top: 40%;
-    background-image: url("img/CbannerSOLO.png"), url("img/CbannerTESO.png"), url("img/CbannerBDO.png");
-    background-size: contain;
-    animation: defilement2 12s linear infinite;
+.menu label {
+    cursor: pointer;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50px;
+    margin: 0 0.2em 1em;
 }
-.d2:hover{
-    animation-play-state: paused;
+.menu label:hover,.menu label:focus {
+    background: #1c87c9;
+}
+.slide-input{
+    opacity: 0;
+}
+.slide-img {
+    width: 100%;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 10;
+    transition: left 0s 0.75s;
+}
+[id^="slide"]:checked + .slide-img {
+    left: 0;
+    z-index: 100;
+    transition: left 0.65s ease-out;
 }
