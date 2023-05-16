@@ -13,7 +13,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" placeholder="Email" class="form-control" id="email" pattern="+@" name="mail" value="<?php if(isset($_SESSION["user"])) :?><?= $_SESSION["user"]->userEmail ?><?php endif ?>">
+                    <input type="email" placeholder="Email" class="form-control" id="email" pattern="+@" name="email" value="<?php if(isset($_SESSION["user"])) :?><?= $_SESSION["user"]->userEmail ?><?php endif ?>">
                     <?php if(isset($messageErrorLogin['email'])) :?><p class="text-danger"> <?= $messageErrorLogin['mail'] ?> </p> <?php endif ?>
                 </div>
                 <div class="mb-3">

@@ -4,7 +4,22 @@ require_once "Model/userModel.php";
 
 $uri = $_SERVER['REQUEST_URI'];
 
-if($uri === "/inscription"){
+if ($uri === "/connexion") {
+    if(isset($_POST["btnEnvoi"])){
+        connectUser($pdo);
+        header('location:/');
+    }
+    require_once "Templates/Users/connexion.php";
+}elseif ($uri === "/profil") {
+    if(isset($_POST["btnEnvoi"])){
+        updateUser($pdo);
+        header('location:/profil');
+    }
+    require_once "Templates/Users/InscriptionOrEditProfil.php";
+}elseif ($uri === "/deconnexion") {
+    session_destroy();      
+    header('location:/');
+} elseif($uri === "/inscription"){
     if(isset($_POST["btnEnvoi"])){
         $messageError = verifData();
         if (!isset($messageError)) {
@@ -17,18 +32,10 @@ if($uri === "/inscription"){
         }
     }
     require_once "Templates/Users/InscriptionOrEditProfil.php";
-}
-elseif ($uri === "/connexion") {
-    if(isset($_POST["btnEnvoi"])){
-        ChercherUser($pdo);
-        header('location:/');
-    }
-    require_once "Templates/Users/connexion.php";
-}elseif ($uri === "/deconnexion") {
-    session_destroy();
-    header('location:/');
-}elseif ($uri === "/profil") {
-    require_once "Templates/Users/profil.php";
+
+
+
+
 }elseif ($uri === "/modifyProfil") {
     if(isset($_POST["btnEnvoi"])){
         modifyUser($pdo);

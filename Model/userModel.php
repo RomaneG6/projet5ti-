@@ -2,27 +2,27 @@
 
 function createUser($pdo){
     try{
-        $query = "insert into utilisateurs (nameUser, firstNUser, loginUser, passWordUser, emailUser) values (:nameUser, :firstNUser, :loginUser, :passWordUser, :emailUser)"; //nom des colonnes utilisateur
+        $query = "insert into user (userNom, userPrenom, userLogin, userEmail, userPassWord) values (:userNom, :userPrenom, :userLogin, :userEmail, :userPassWord)"; //nom des colonnes de user
         $newUser = $pdo->prepare($query);
         $newUser->execute([
-            'nameUser' => $_POST["nom"],
-            'firstNUser' => $_POST["prenom"],
-            'loginUser' => $_POST["login"],
-            'passWordUser' => $_POST["mp"],
-            'emailUser' => $_POST["email"],
+            'userNom' => $_POST["nom"],
+            'userPrenom' => $_POST["prenom"],
+            'userLogin' => $_POST["login"],
+            'userEmail' => $_POST["email"],
+            'userPassWord' => $_POST["mp"],
         ]);
     }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);
     }
 }
-function ChercherUser($pdo){
+function connectUser($pdo){
     try {
-        $query = "select*from utilisateurs where loginUser=:loginUser and passWordUser=:passWordUser";
+        $query = "select*from user where userLogin=:userLogin and userPassWord=:userPassWord";
         $chercheUser = $pdo->prepare($query);
         $chercheUser->execute([
-            'loginUser' => $_POST['login'],
-            'passWordUser' => $_POST['mp'],
+            'userLogin' => $_POST['login'],
+            'userPassWord' => $_POST['mp'],
 
         ]);
         $user=$chercheUser -> fetch();
@@ -30,6 +30,21 @@ function ChercherUser($pdo){
             $_SESSION['user']=$user;
         }
     } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+function updateUser($pdo){
+    try{
+        $query = "update user set userNom = :userNom, userPrenom = :userPrenom, userPassWord = :userPassWord where userId = :userId"; //nom des colonnes de user
+        $newUser = $pdo->prepare($query);
+        $newUser->execute([
+            'userNom' => $_POST["nom"],
+            'userPrenom' => $_POST["prenom"],
+            'userPassWord' => $_POST["mp"],
+            'userId' => $_SESSION["user"] -> userId 
+        ]);
+    }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);
     }
