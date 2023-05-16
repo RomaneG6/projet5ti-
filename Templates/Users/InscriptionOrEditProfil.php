@@ -18,7 +18,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="Login" class="form-label">Login</label>
-                    <input type="text" placeholder="Login" class="form-control" id="Login" name="login" value="<?php if(isset($_SESSION["user"])) :?><?= $_SESSION["user"]->userLogin ?><?php endif ?>">
+                    <input type="text" placeholder="Login" class="form-control" id="Login" name="login" <?php if(isset($_SESSION["user"])) :?>disabled<?php endif ?>value="<?php if(isset($_SESSION["user"])) :?><?= $_SESSION["user"]->userLogin ?><?php endif ?>">
                     <?php if(isset($messageErrorLogin['login'])) :?><p class="text-danger"> <?= $messageErrorLogin['login'] ?> </p> <?php endif ?>
                 </div>
                 <div class="mb-3">
