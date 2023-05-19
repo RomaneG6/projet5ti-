@@ -1,17 +1,17 @@
-<div class="slider-container">
-	<div class="menu">
-		<label for="slide-dot-1"></label>
-		<label for="slide-dot-2"></label>
-		<label for="slide-dot-3"></label>
-	</div>
-
-	<input class="slide-input" id="slide-dot-1" type="radio" name="slides" checked>
-	<img class="slide-img" src="https://www.codeur.com/tuto/wp-content/uploads/2021/12/slide1.jpg">
-
-	<input class="slide-input" id="slide-dot-2" type="radio" name="slides">
-	<img class="slide-img" src="https://www.codeur.com/tuto/wp-content/uploads/2021/12/slide2.jpg">
-
-	<input class="slide-input" id="slide-dot-3" type="radio" name="slides">
-	<img class="slide-img" src="https://www.codeur.com/tuto/wp-content/uploads/2021/12/slide3.jpg">
-
+<h1>Page d'accueil</h1>
+<?php if (isset($_SESSION["user"])) : ?><a href="createPack">Ajouter un pack</a><?php endif ?>
+<div class="flexible wrap justify-content-center">
+	<?php foreach ($packs as $pack) : ?>
+		<div class="bordure center blockAffichage">
+			<h2><?= $pack->packNom ?></h2>
+			<img src="<?= $pack->packImage ?>" alt="Photo du pack">
+			<p><span><?= $pack->packMmorpg ?></span> - <span><?= $pack->packGenre ?></span><span><?= $pack->packCat ?></span></p>
+			<p><?= $pack->packPrix ?></p>
+			<p><a href="voirPack?packId=<?= $pack->packId ?>">Voir Le pack</a></p>
+			<?php if($uri === "/mesPack") : ?>
+			<p><a href="deletePack?schoolId<?= $pack->packId ?>">Supprimer le pack</a></p>
+			<p><a href="deletePack?schoolId<?= $pack->packId ?>">Modifier le pack</a></p>
+			<?php endif ?>
+		</div>
+	<?php endforeach ?>
 </div>

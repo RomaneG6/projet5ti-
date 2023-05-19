@@ -1,6 +1,7 @@
 <?php
 
 require_once "Model/userModel.php";
+require_once "Model/packModel.php";
 
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -26,9 +27,9 @@ if ($uri === "/connexion") {
         }
     require_once "Templates/Users/InscriptionOrEditProfil.php";
 }elseif ($uri === "/deleteProfil") {
+    deleteAllPacksFromUser($pdo);
     deleteUser($pdo);
-    session_destroy();
-    header("location:/");
+    header("location:/deconnexion");
 } elseif($uri === "/inscription"){
     if(isset($_POST["btnEnvoi"])){
         $messageError = verifData();

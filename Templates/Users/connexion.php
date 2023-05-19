@@ -1,4 +1,4 @@
-<div class="flex space-evenly wrap">
+<h1>Connexion Page</h1>
     <form method="post" action="">
         <fieldset>
             <legend>Se connecter</legend>
@@ -11,7 +11,7 @@
                 <input type="password" placeholder="Mot de passe" class="form-control" id="Password" name="mp" required>
             </div>
             <div>
-                <button name="btnEnvoi" class="btn btn-primary">Envoi</button>
+                <button name="btnEnvoi" class="btn btn-primary" value="Envoyer">Envoyer</button>
             </div>
         </fieldset>
     </form>
