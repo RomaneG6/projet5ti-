@@ -1,1 +1,1 @@
-<p><?= $_SESSION['stream'] -> streamImage ?></p>
+<p><?= $_SESSION['pack'] -> packImage ?></p>

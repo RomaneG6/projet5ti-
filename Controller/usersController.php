@@ -10,25 +10,31 @@ if ($uri === "/connexion") {
         header('location:/');
     }
     require_once "Templates/Users/connexion.php";
-}elseif ($uri === "/profil") {
-    if(isset($_POST["btnEnvoi"])){
-        updateUser($pdo);
-        header('location:/profil');
-    }
-    require_once "Templates/Users/InscriptionOrEditProfil.php";
 }elseif ($uri === "/deconnexion") {
     session_destroy();      
     header('location:/');
+}elseif ($uri === "/profil") {
+    require_once "Templates/Users/profil.php";
+}elseif ($uri === "/updateProfil") {
+        if(isset($_POST["btnEnvoi"])){
+            $messageError = verifData();
+            if (!$messageError) {
+                updateUser($pdo);
+                updateSession($pdo); 
+                header("location:/profil");
+            }
+        }
+    require_once "Templates/Users/InscriptionOrEditProfil.php";
+}elseif ($uri === "/deleteProfil") {
+    deleteUser($pdo);
+    session_destroy();
+    header("location:/");
 } elseif($uri === "/inscription"){
     if(isset($_POST["btnEnvoi"])){
         $messageError = verifData();
-        if (!isset($messageError)) {
-            $messageError = verifData();
-            if (!$messageError) {
-                createUser($pdo);
-                header('location:/connexion');
-            }
-            
+        if (!$messageError) {
+            createUser($pdo);
+            header('location:/connexion');
         }
     }
     require_once "Templates/Users/InscriptionOrEditProfil.php";
@@ -36,12 +42,6 @@ if ($uri === "/connexion") {
 
 
 
-}elseif ($uri === "/modifyProfil") {
-    if(isset($_POST["btnEnvoi"])){
-        modifyUser($pdo);
-        header('location:/profil');
-    }
-    require_once "Templates/Users/InscriptionOrEditProfil.php";
 }
 
 
