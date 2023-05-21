@@ -11,7 +11,7 @@
 
                     <select name="mmorpg" id="mmorpg-select">
                         <?php foreach($options as $option) : ?>
-                        <option value="<?= $option->mmorpgId ?>"><?= $option->nom ?></option>
+                        <option value="<?= $option->mmorpgId ?>" <?php if(isset($optionMmorpg)) :?><?php foreach($OptionsMmorpg as $optionMmorpg) : ?><?php if($option->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -42,7 +42,7 @@
                 </div>  
                 <a href="connexion.php">Déjà inscrit ?</a>
                 <div>   
-                    <button name="btnEnvoi" class="btn btn-primary" value ="envoyer"><?php if(isset($pack)) :?>Modifier<?php end : ?>Ajouter<?php endif ?></button>
+                    <button name="btnEnvoi" class="btn btn-primary" value ="envoyer"><?php if(isset($pack)) :?>Modifier<?php else : ?>Ajouter<?php endif ?></button>
                 </div>
             </fieldset>
         </form>

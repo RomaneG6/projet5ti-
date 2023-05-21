@@ -1,5 +1,10 @@
-<h1>Page d'accueil</h1>
+
+<h1><?php if(isset($_SESSION["user"])) :?>Vos Packs<?php else : ?>Page d'Accueil<?php endif ?></h1>
+
 <?php if (isset($_SESSION["user"])) : ?><a href="createPack">Ajouter un pack</a><?php endif ?>
+	<?php if(isset($_SESSION['flashMessage'])) : ?>
+	<?php require_once "Components/alertFlashMessage.php"?>
+	<?php endif ?>
 <div class="flexible wrap justify-content-center">
 	<?php foreach ($packs as $pack) : ?>
 		<div class="bordure center blockAffichage">

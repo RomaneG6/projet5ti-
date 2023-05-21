@@ -5,28 +5,28 @@ function selectAllPack($pdo){
         $query = "select * from pack";  
         $selectPack = $pdo->prepare($query);
         $selectPack->execute();
-        $pack = $selectPack->fetchAll();
-        return $pack;
+        $packs = $selectPack->fetchAll();
+        return $packs;
     }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);
     }
 }
 
-function selectMyPacks($pdo){
+/*function selectMyPacks($pdo){
     try{
         $query = 'select * from pack where userId = :userId ';  
         $selectPack = $pdo->prepare($query);
         $selectPack->execute([
             'userId' => $_SESSION["user"]->userId
         ]);
-        $pack = $selectPack->fetchAll();
-        return $pack;
+        $packs = $selectPack->fetchAll();
+        return $packs;
     }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);
     }
-}
+}*/
 
 function selectOnePack($pdo){
     try{
@@ -63,12 +63,29 @@ function createPack($pdo){
         $query = 'insert into pack (packNom, packMmorpg, packGenre, packCat, packPrix, packImage, userId, catId) values (:packNom, :packMmorpg, :packGenre, :packCat, :packPrix, :packImage, :userId, :catId)';  
         $selectPack = $pdo->prepare($query);
         $selectPack->execute([
+            'packNom' => htmlentities($_POST["nom"]),
+            'packGenre' => htmlentities($_POST["genre"]),
+            'packPrix' => htmlentities($_POST["prix"]),
+            'packImage' => htmlentities($_POST["image"]),
+            'catId' => $_SESSION["cat"]->catId,
+            'userId' => $_SESSION["user"]->userId
+        ]);
+    }catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+function updatePack(){
+    try{
+        $query = 'update user set packNom = :packNom, packMmorpg = :packMmorpg, packCat = :packCat, packPrix = :packPrix,packImage = :packImage where packId = :packId';  
+        $selectPack = $pdo->prepare($query);
+        $selectPack->execute([
             'packNom' => $_POST["nom"],
             'packGenre' => $_POST["genre"],
             'packPrix' => $_POST["prix"],
             'packImage' => $_POST["image"],
-            'catId' => $_POST["cat"]->catId,
-            'userId' => $_SESSION["user"]->userId
+            'packId' => $_GET["packId"]
         ]);
     }catch(PDOException $e){
         $message = $e->getMessage();

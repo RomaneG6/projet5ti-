@@ -18,8 +18,8 @@ function ajouterOptionPack($pdo, $packId, $mmorpgId){
         $query = "select * from option_pack (packId, mmorpgId) values (:packId, :mmorpgId)";  
         $OptionMmorpg = $pdo->prepare($query);
         $OptionMmorpg->execute([
-            'packId' => $packId,
-            'mmorpgId' => $mmorpgId
+            'packId' => htmlentities($packId),
+            'mmorpgId' => htmlentities($mmorpgId)
         ]);
         $OptionMmorpg = $OptionMmorpg->fetchAll();
         return $OptionMmorpg;
