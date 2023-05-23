@@ -13,7 +13,7 @@ function selectAllPack($pdo){
     }
 }
 
-/*function selectMyPacks($pdo){
+function selectMyPacks($pdo){
     try{
         $query = 'select * from pack where userId = :userId ';  
         $selectPack = $pdo->prepare($query);
@@ -26,7 +26,7 @@ function selectAllPack($pdo){
         $message = $e->getMessage();
         die($message);
     }
-}*/
+}
 
 function selectOnePack($pdo){
     try{

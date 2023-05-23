@@ -1,9 +1,13 @@
 <?php
 
+require_once "Model/packModel.php";
+require_once "Model/optionModel.php";
+
 $uri = $_SERVER['REQUEST_URI'];
 
 if ($uri === '/index.php' || $uri === '/'){
     $packs = selectAllPack($pdo);
+    var_dump($packs);
     require_once "Templates/Packs/pageAccueil.php";
 }elseif ($uri === '/createPack') {
     if(isset($_POST["btnEnvoi"])){
@@ -20,7 +24,7 @@ if ($uri === '/index.php' || $uri === '/'){
     $options = selectAllOptionsMmorpg($pdo);
     require_once "Templates/Packs/editOrCreatePack.php";
 }elseif ($uri === "/mesPacks") {
-    //$packs = selectMyPacks($pdo);
+    $packs = selectMyPacks($pdo);
     require_once "Templates/Packs/PageAccueil.php";  
 }elseif (isset($_GET["packId"]) && $uri === "/voirPack?packId=" . $_GET["packId"]) {
     $pack = selectOnePack($pdo);
