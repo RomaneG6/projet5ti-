@@ -2,9 +2,12 @@
 
 function selectAllPack($pdo){
     try{
+        //la requête
         $query = "select * from pack";  
+        //execution requête
         $selectPack = $pdo->prepare($query);
-        $selectPack->execute();
+        $selectPack -> execute();
+        //montre toutes les données select
         $packs = $selectPack->fetchAll();
         return $packs;
     }catch(PDOException $e){
@@ -15,8 +18,8 @@ function selectAllPack($pdo){
 
 function selectMyPacks($pdo){
     try{
-        $query = 'select * from pack where userId = :userId ';  
-        $selectPack = $pdo->prepare($query);
+        $query = 'select * from pack_user where userId = :userId ';  
+        $selectPack = $pdo->prepare($query);    
         $selectPack->execute([
             'userId' => $_SESSION["user"]->userId
         ]);
@@ -33,9 +36,9 @@ function selectOnePack($pdo){
         $query = 'select * from pack where packId = :packId ';  
         $selectPack = $pdo->prepare($query);
         $selectPack->execute([
-            'userId' => $$_GET["packId"]
+            'userId' => $_GET["packId"]
         ]);
-        $pack = $selectPack->fetchAll();
+        $pack = $selectPack->fetch();
         return $pack;
     }catch(PDOException $e){
         $message = $e->getMessage();
@@ -50,8 +53,8 @@ function selectOptionsPack($pdo){
         $selectoptions->execute([
             'packId' => $_GET["packId"]
         ]);
-        $options = $selectoptions->fetchAll();
-        return $options;
+        $OptionMmorpgs = $selectoptions->fetchAll();
+        return $OptionMmorpgs;
     }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);

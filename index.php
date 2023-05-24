@@ -34,7 +34,6 @@
     <div class="fond">
         <?php
             require_once "Controller/packsController.php";
-            require_once "Templates/Packs/pageAccueil.php";
             require_once "Controller/usersController.php";
         ?>
     </div>

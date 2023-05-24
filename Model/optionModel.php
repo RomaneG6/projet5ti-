@@ -3,9 +3,21 @@
 function selectAllOptionsMmorpg($pdo){
     try{
         $query = "select * from mmorpg";  
-        $OptionMmorpg = $pdo->prepare($query);
-        $OptionMmorpg->execute();
-        $OptionMmorpg = $OptionMmorpg->fetchAll();
+        $mmorpg = $pdo->prepare($query);
+        $mmorpg->execute();
+        $mmorpgs = $mmorpg->fetchAll();
+        return $mmorpgs;
+    }catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+function selectAllOptionsCat($pdo){
+    try{
+        $query = "select * from cat";  
+        $mmorpg = $pdo->prepare($query);
+        $mmorpg->execute();
+        $mmorpg = $OptionMmorpg->fetchAll();
         return $OptionMmorpg;
     }catch(PDOException $e){
         $message = $e->getMessage();
@@ -13,11 +25,11 @@ function selectAllOptionsMmorpg($pdo){
     }
 }
 
-function ajouterOptionPack($pdo, $packId, $mmorpgId){
+/*function ajouterOptionPack($pdo, $packId, $mmorpgId){
     try{
-        $query = "select * from option_pack (packId, mmorpgId) values (:packId, :mmorpgId)";  
-        $OptionMmorpg = $pdo->prepare($query);
-        $OptionMmorpg->execute([
+        $query = "select * from pack_mmorpg (packId, mmorpgId) values (:packId, :mmorpgId)";  
+        $mmorpg = $pdo->prepare($query);
+        $mmorpg ->execute([
             'packId' => htmlentities($packId),
             'mmorpgId' => htmlentities($mmorpgId)
         ]);
@@ -27,11 +39,11 @@ function ajouterOptionPack($pdo, $packId, $mmorpgId){
         $message = $e->getMessage();
         die($message);
     }
-}
+}*/
 
 function deleteOptionPack($pdo){
     try{
-        $query = 'delete from option_pack where packId = :packId';  
+        $query = 'delete from packMmorpg where packId = :packId';  
         $selectPack = $pdo->prepare($query);
         $selectPack->execute([
             'packId' => $_GET["packId"]

@@ -7,11 +7,11 @@
                         <?php if(isset($messageError["nom"])) :?><small><?= $messageError["nom"] ?></small><?php endif ?>
                 </div>
                 <div class="mb-3">                    
-                    <label for="mmorpg-select">Choisis un MMORPG :</label>
+                    <label for="mmorpg-select">Choisis un mmorpg :</label>
 
-                    <select name="mmorpg" id="mmorpg-select">
-                        <?php foreach($options as $option) : ?>
-                        <option value="<?= $option->mmorpgId ?>" <?php if(isset($optionMmorpg)) :?><?php foreach($OptionsMmorpg as $optionMmorpg) : ?><?php if($option->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>></option>
+                    <select name="mmorpg[]" id="mmorpg-select" multiple required>
+                        <?php foreach($optionMmorpgs as $optionMmorpg) : ?>
+                        <option value="<?= $optionMmorpg->mmorpgId ?>"<?php if(isset($optionMmorpg)) :?><?php foreach($OptionsMmorpg as $optionMmorpg) : ?><?php if($option->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>><?= $optionMmorpg->mmorpgLogin ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -21,12 +21,13 @@
                     <input type="genre" placeholder="Genre" class="form-control" id="genre" name="genre" value="<?php if(isset($pack)) :?><?= $pack->packGenre?><?php endif ?>">
                     <?php if(isset($messageError['genre'])) :?><small><?= $messageError['genre'] ?></small><?php endif ?>
                 </div>
+                <label>Genre</label><input type="radio" name="gender" value="homme">Homme<input type="radio" name="gender" value="femme">Femme<input type="radio" name="gender" value="fille">fille
                 <div class="mb-3">         
                     <label for="cats-select">Choisis une Catégorie :</label>
 
                     <select name="cats" id="cats-select">
                         <?php foreach($options as $option) : ?>
-                            <option value="<?= $option->catId ?>"><?= $option->nom ?></option>
+                            <option value="<?= $option->catId ?>" <?php if(isset($OptionCat)) :?><?php foreach($OptionsMmorpg as $optionMmorpg) : ?><?php if($option->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>></option>
                     <?php endforeach ?>
                     </select>
                 </div>
@@ -40,7 +41,6 @@
                     <input type="text" placeholder="Image" class="form-control" id="image" name="image" value="<?php if(isset($pack)) :?><?= $pack->packImage?><?php endif ?>">
                     <?php if(isset($messageError['image'])) :?><small><?= $messageError['image'] ?></small><?php endif ?>
                 </div>  
-                <a href="connexion.php">Déjà inscrit ?</a>
                 <div>   
                     <button name="btnEnvoi" class="btn btn-primary" value ="envoyer"><?php if(isset($pack)) :?>Modifier<?php else : ?>Ajouter<?php endif ?></button>
                 </div>
