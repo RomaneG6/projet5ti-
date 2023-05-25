@@ -20,4 +20,3 @@
 		</div>
 	<?php endforeach ?>
 </div>
-<p><span><?= $pack->mmorpgNom ?></span> - <span><?= $pack->genreNom ?></span><span><?= $pack->catNom ?></span></p>

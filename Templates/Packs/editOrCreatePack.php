@@ -11,7 +11,7 @@
 
                     <select name="mmorpg[]" id="mmorpg-select" multiple required>
                         <?php foreach($optionMmorpgs as $optionMmorpg) : ?>
-                        <option value="<?= $optionMmorpg->mmorpgId ?>"<?php if(isset($optionMmorpg)) :?><?php foreach($OptionsMmorpg as $optionMmorpg) : ?><?php if($option->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>><?= $optionMmorpg->mmorpgLogin ?></option>
+                        <option value="<?= $optionMmorpg->mmorpgId ?>"<?php if(isset($optionMmorpg)) :?><?php foreach($OptionMmorpgs as $optionMmorpg) : ?><?php if($mmorpg->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>><?= $optionMmorpg->mmorpgLogin ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -25,10 +25,10 @@
                 <div class="mb-3">         
                     <label for="cats-select">Choisis une Catégorie :</label>
 
-                    <select name="cats" id="cats-select">
-                        <?php foreach($options as $option) : ?>
-                            <option value="<?= $option->catId ?>" <?php if(isset($OptionCat)) :?><?php foreach($OptionsMmorpg as $optionMmorpg) : ?><?php if($option->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>></option>
-                    <?php endforeach ?>
+                    <select name="cat[]" id="cat-select" multiple required>
+                        <?php foreach($optionCats as $optionCat) : ?>
+                        <option value="<?= $optionCat->catId ?>"<?php if(isset($optionCat)) :?><?php foreach($optionCats as $optionCat) : ?><?php if($cat->catId === $optionCat->optionCatId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>><?= $optionCat->catNom ?></option>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="mb-3">
