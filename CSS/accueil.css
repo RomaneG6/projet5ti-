@@ -1,0 +1,7 @@
+body{
+    background: linear-gradient(rgb(36, 35, 35), black);
+    width: 100%;
+    height: 100%;
+    /*background-image: url(img/CBackTeso.png);
+    background-image: repeat-y;*/
+}

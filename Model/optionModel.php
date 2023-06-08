@@ -12,13 +12,25 @@ function selectAllOptionsMmorpg($pdo){
         die($message);
     }
 }
-function selectAllOptionsCat($pdo){
+function selectAllOptionsGenres($pdo){
+    try{
+        $query = "select * from mmorpg";  
+        $genre = $pdo->prepare($query);
+        $genre->execute();
+        $genres = $genre->fetchAll();
+        return $genres;
+    }catch(PDOException $e){
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+function selectAllOptionsCats($pdo){
     try{
         $query = "select * from cat";  
-        $mmorpg = $pdo->prepare($query);
-        $mmorpg->execute();
-        $mmorpg = $OptionMmorpg->fetchAll();
-        return $OptionMmorpg;
+        $cat = $pdo->prepare($query);
+        $cat->execute();
+        $cats = $cat->fetchAll();
+        return $cats;
     }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);

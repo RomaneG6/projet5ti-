@@ -6,7 +6,7 @@
     <p><?php $pack->packPrix ?></p>
 </div>
 <div>
-
+    <img src="img/CBackTeso.png" alt="fond teso">
     <table>
         <tr>
             <th>Options MMORPG</th>

@@ -1,6 +1,5 @@
 body{
-    background-color: rgb(43, 39, 38);
-
+    color: rgb(175, 175, 175);
 }
 .flex{
     display: flex;
@@ -19,7 +18,8 @@ a{
     text-decoration: none;
 }
 .bordure{
-    border: 2px solid rgb(21, 23, 26);
+    border: 1px solid black;
+    box-shadow: black -5px 10px 40px 0px;
 }
 img{
     width: 100%;
@@ -28,7 +28,6 @@ img{
     text-align: center;
 }
 .blockAffichage{
-    color: white;
     background-color: rgb(21, 27, 34);
     width: 300px;
     margin: 50px 10px;

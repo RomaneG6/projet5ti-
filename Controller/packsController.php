@@ -6,7 +6,7 @@ require_once "Model/optionModel.php";
 $uri = $_SERVER['REQUEST_URI'];
 
 if ($uri === '/index.php' || $uri === '/'){
-    $packs = selectAllPack($pdo);
+    $packs = selectAllPacks($pdo);
     require_once "Templates/Packs/pageAccueil.php";
 }elseif ($uri === '/createPack') {
     if(isset($_POST["btnEnvoi"])){
@@ -20,7 +20,9 @@ if ($uri === '/index.php' || $uri === '/'){
         $_SESSION['flashColor'] = "success";
         header("location :/mesPacks");   
     }
-    $optionMmorpgs = selectAllOptionsMmorpg($pdo);
+    $mmorpgs = selectAllOptionsMmorpg($pdo);
+    $cats = selectAllOptionsCats($pdo);
+    $genres = selectAllOptionsGenres($pdo);
     require_once "Templates/Packs/editOrCreatePack.php";
 }elseif ($uri === "/mesPacks") {
     $packs = selectMyPacks($pdo);
@@ -28,7 +30,7 @@ if ($uri === '/index.php' || $uri === '/'){
 }elseif (isset($_GET["packId"]) && $uri === "/voirPack?packId=" . $_GET["packId"]) {
     $pack = selectOnePack($pdo);
     $optionMmorpgs = selectOptionsPack($pdo);
-    var_dump($optionMmorpgs);
+    var_dump($pack);
     require_once "Templates/Packs/voirPack.php";
 }elseif (isset($_GET["packId"]) && $uri === "/deletePack?packId=" . $_GET["packId"]) {
     deleteOptionPack($pdo);

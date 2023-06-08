@@ -1,6 +1,6 @@
 <?php
 
-function selectAllPack($pdo){
+function selectAllPacks($pdo){
     try{
         //la requête
         $query = "select * from pack";  
@@ -36,7 +36,7 @@ function selectOnePack($pdo){
         $query = 'select * from pack where packId = :packId ';  
         $selectPack = $pdo->prepare($query);
         $selectPack->execute([
-            'userId' => $_GET["packId"]
+            'packId' => $_GET["packId"]
         ]);
         $pack = $selectPack->fetch();
         return $pack;

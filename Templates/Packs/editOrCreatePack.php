@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="CSS/accueil.css">
 <form method="post" action="">
             <fieldset>
                 <legend>Creation Pack</legend>
@@ -9,9 +10,9 @@
                 <div class="mb-3">                    
                     <label for="mmorpg-select">Choisis un mmorpg :</label>
 
-                    <select name="mmorpg[]" id="mmorpg-select" multiple required>
-                        <?php foreach($optionMmorpgs as $optionMmorpg) : ?>
-                        <option value="<?= $optionMmorpg->mmorpgId ?>"<?php if(isset($optionMmorpg)) :?><?php foreach($OptionsMmorpg as $optionMmorpg) : ?><?php if($option->mmorpgId === $optionMmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>><?= $optionMmorpg->mmorpgLogin ?></option>
+                    <select name="mmorpg" id="mmorpg-select">
+                        <?php foreach($mmorpgs as $mmorpg) : ?>
+                        <option value="<?= $mmorpg->mmorpgId ?>"<?php if(isset($mmorpg)) :?><?php foreach($mmorpgs as $mmorpg) : ?><?php if($option->mmorpgId === $mmorpg->optionMmorpgId) : ?>selected<?php endif ?><?php endforeach ?><?php endif ?>><?= $mmorpg->mmorpgLogin ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
