@@ -37,7 +37,7 @@ function selectAllOptionsCats($pdo){
     }
 }
 
-/*function ajouterOptionPack($pdo, $packId, $mmorpgId){
+function ajouterOptionPack($pdo, $packId, $mmorpgId){
     try{
         $query = "select * from pack_mmorpg (packId, mmorpgId) values (:packId, :mmorpgId)";  
         $mmorpg = $pdo->prepare($query);
@@ -45,13 +45,11 @@ function selectAllOptionsCats($pdo){
             'packId' => htmlentities($packId),
             'mmorpgId' => htmlentities($mmorpgId)
         ]);
-        $OptionMmorpg = $OptionMmorpg->fetchAll();
-        return $OptionMmorpg;
     }catch(PDOException $e){
         $message = $e->getMessage();
         die($message);
     }
-}*/
+}
 
 function deleteOptionPack($pdo){
     try{

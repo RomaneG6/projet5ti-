@@ -22,3 +22,4 @@
 	<?php endforeach ?>
 </div>
 <p><span><?= $mmorpg->mmorpgNom ?></span> - <span><?= $genre->genreNom ?></span><span><?= $cat->catNom ?></span></p>
+

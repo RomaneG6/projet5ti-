@@ -48,7 +48,7 @@ function selectOnePack($pdo){
 
 function selectOptionsPack($pdo){
     try{
-        $query = 'select * from mmorpg where mmorpgId in (select mmorpgId from option_pack where packId = :packId';  
+        $query = 'select * from mmorpg where mmorpgId in (select mmorpgId from pack_mmorpg where packId = :packId)';  
         $selectoptions = $pdo->prepare($query);
         $selectoptions->execute([
             'packId' => $_GET["packId"]
@@ -79,7 +79,7 @@ function createPack($pdo){
     }
 }
 
-function updatePack(){
+function updatePack($pdo){
     try{
         $query = 'update user set packNom = :packNom, packMmorpg = :packMmorpg, packCat = :packCat, packPrix = :packPrix,packImage = :packImage where packId = :packId';  
         $selectPack = $pdo->prepare($query);
